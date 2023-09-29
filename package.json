@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "next": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
     "autoprefixer": "latest",
+    "daisyui": "^3.8.1",
     "postcss": "latest",
     "tailwindcss": "latest"
   }
