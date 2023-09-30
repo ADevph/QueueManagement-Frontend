@@ -42,6 +42,7 @@ const DoctorForm = () => {
 
       // Redirect or perform other actions after successful submission
       console.log("Form submitted successfully!");
+      router.push("/docdashboard");
     } catch (error) {
       console.error('Error occurred while adding doctor:', error);
     }

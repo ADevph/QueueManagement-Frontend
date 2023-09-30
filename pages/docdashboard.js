@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import http from '../http'; // Assuming you have an http utility for making API requests
+import axios from "axios";
+import { useRouter } from 'next/router';
+import { useForm } from "react-hook-form";
 
-const DocDashboard = () => {
+function DocDashboard(){
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
@@ -9,16 +11,26 @@ const DocDashboard = () => {
   }, []);
 
   const fetchAllDoctors = () => {
-    http.get('/doctors').then((res) => {
-      setDoctors(res.data);
-    });
+    // http.get('/doctors').then((res) => {
+      // setDoctors(res.data);
+    // });
   };
 
-  const deleteDoctor = (id) => {
-    http.delete(`/doctors/${id}`).then((res) => {
-      fetchAllDoctors();
-    });
-  };
+
+const deleteDoctor = async (id) => {
+  try {
+    // const response = await axios.delete(`/api/doctors/${id}`);
+
+    if (response.status === 200) {
+      console.log("Doctor deleted successfully");
+    } else {
+      console.error("Failed to delete doctor.");
+    }
+  } catch (error) {
+    console.error("Error deleting doctor:", error);
+  }
+};
+
 
   return (
     <div>
@@ -26,12 +38,12 @@ const DocDashboard = () => {
       <hr className="font-extrabold p-2" />
       <table className="table">
         <thead>
-          <tr>
-            <th>Sno.</th>
-            <th>Name</th>
-            <th>Specialization</th>
-            <th>Action</th>
-          </tr>
+        <tr>
+        <th className="text-white">Serial</th>
+        <th className="text-white">Name</th>
+        <th className="text-white">Specialization</th>
+        <th className="text-white">Action</th>
+        </tr>
         </thead>
         <tbody>
           {doctors.map((doctor, index) => (
