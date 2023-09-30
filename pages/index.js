@@ -1,4 +1,6 @@
 
+
+
 import Link from "next/link";
 import dynamic from "next/dynamic";
 const Layout = dynamic(() => import('./Layout/layout'), {
