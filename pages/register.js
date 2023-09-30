@@ -255,7 +255,7 @@ export default function Registration() {
 
               <p className="mt-4 text-center font-semibold text-xl text-black">
                 Already have an account?
-                <a href="/loginform" className="text-pink-500 hover:text-blue-700">Sign In
+                <a href="/login" className="text-pink-500 hover:text-blue-700">Sign In
                 </a>
               </p>
             </form>
