@@ -1,43 +1,26 @@
-
-
-
+import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-const Layout = dynamic(() => import('./Layout/layout'), {
-  ssr: false,
-})
-const Title = dynamic(() => import('./Layout/title'), {
-  ssr: false,
-})
+import Layout from "./Layout/layout";
 
 
 
 export default function Home() {
-
   return (
     <>
 
-      <Title page="Home"> </Title>
-      <Layout>
+      <Layout title="Home - Queue Management">
+        <section className="flex justify-center">
+          <div className="flex flex-col justify-center items-center w-full max-w-[1600px] min-h-screen pt-[75px] pb-[50px]">
+            <div className="text-4xl text-center text-black p-2">
+              <h1> Welcome Here! </h1>
+            </div>
 
-        <div className="hover:bg-cyan-200  text-4xl text-center text-black bg-slate-200 p-2">
-          <h1> Welcome! </h1>
-        </div>
-
-        <div className="mt-4 flex items-center justify-center">
-
-          <img src="../q.png" className=""></img>
-
-        </div>
-        <br></br>
-        <br></br>
-
-
-
-
-
+            <div className="mt-4 flex items-center justify-center w-full">
+              <Image src="/q.png" alt="image" width={200} height={200} className="object-cover origin-center" />
+            </div>
+          </div>
+        </section>
       </Layout>
-
 
     </>
 

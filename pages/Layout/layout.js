@@ -1,21 +1,15 @@
-import Footer from './footer'
-import PatientHeader from './patientheader'
+import CustomHead from "./customhead";
+import NavigationBar from "./navbar";
+import Footer from "./footer";
 
+export default function Layout(props) {
 
-export default function Layout (
-    {children}
-){
     return (
-       
         <>
-
-<PatientHeader> </PatientHeader>
-
-
-  {children}
-
-<Footer/>
+            <CustomHead title={props.title} />
+            <NavigationBar />
+            {props.children}
+            <Footer />
         </>
-      
-    )
+    );
 }
