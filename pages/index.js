@@ -17,26 +17,26 @@ export default function Home() {
   return (
     <>
 
-      <Title page="Home"> </Title>
-      <Layout>
+    <Title page="Home"> </Title>
+<Layout>
 
-        <div className="hover:bg-cyan-200  text-4xl text-center text-black bg-slate-200 p-2">
-          <h1> Welcome! </h1>
-        </div>
+<div className="hover:bg-cyan-200  text-4xl text-center text-black bg-slate-200 p-2"> 
+<h1> Welcome! </h1>
+</div>
 
-        <div className="mt-4 flex items-center justify-center">
+<div className="mt-4 flex items-center justify-center">
 
-          <img src="../q.png" className=""></img>
+  <img src="../q.png" className=""></img>
 
-        </div>
-        <br></br>
-        <br></br>
-
-
+ </div>
+ <br></br>
+    <br></br>
 
 
 
-      </Layout>
+
+
+    </Layout>
 
 
     </>
