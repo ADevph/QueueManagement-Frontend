@@ -11,12 +11,13 @@
   "dependencies": {
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-hook-form": "^7.46.2"
   },
   "devDependencies": {
     "autoprefixer": "latest",
     "daisyui": "^3.8.1",
     "postcss": "latest",
-    "tailwindcss": "latest"
+    "tailwindcss": "^3.3.3"
   }
 }
