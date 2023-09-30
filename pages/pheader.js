@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 
-export default function PatientHeader(){
+export default function PHeader(){
 
 return (
     <>
@@ -66,9 +66,8 @@ return (
   <div className="navbar-end">
   <ul className="menu menu-horizontal px-1 text-2xl">
 
-      <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="loginform" > Sign In </Link> </li>
-      <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="admin" > Admin </Link> </li>
-      <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="registration" > Sign Up </Link></li>
+      
+      <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="/" > Logout</Link></li>
     
     </ul>
  

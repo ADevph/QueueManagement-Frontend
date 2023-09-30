@@ -12,6 +12,7 @@ export default function Layout (
        
 <PatientHeader> </PatientHeader>
 
+
   {children}
   
 <Footer/>
