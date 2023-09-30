@@ -1,11 +1,10 @@
-import Layout from "./Layout/layout";
-import Title from "./Layout/title";
+import Layout from "./layout/layout";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
-export default function RegisterPage() {
+export default function Registration() {
   const [firstName, setFirstName] = useState("");
   const [firstNameError, setFirstNameError] = useState("");
   const [lastName, setLastName] = useState("");
@@ -96,9 +95,8 @@ export default function RegisterPage() {
 
   return (
     <>
-      <Title page="Registration" />
 
-      <Layout>
+      <Layout title="Registration - Queue Management">
         <div className="flex items-center justify-center h-screen">
           <div className="relative flex flex-col items-center justify-center rounded-xl bg-white shadow-md p-8 w-128">
             <h4 className="block font-sans text-2xl font-bold leading-snug tracking-normal text-blue-gray-900 antialiased">

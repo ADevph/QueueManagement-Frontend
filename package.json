@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "axios": "^1.5.1",
+    "js-cookie": "^3.0.5",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-hook-form": "^7.46.2"
   },
   "devDependencies": {
     "autoprefixer": "latest",
