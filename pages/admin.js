@@ -36,10 +36,12 @@ export default function Home( ) {
 
 
 <div className=" flex items-center justify-center gap-10 p-4">
-<Link className="btn btn-outline bg-sky-100 hover:bg-blue-500" href="clinicform" >Add Your Clinic </Link>
-<Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="docform" >Add Clinic Doctors </Link>
-<Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="docdashboard" > Doctors Dashboard </Link>
-<Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="admindashboard" > Clinic Dashboard </Link>
+    <Link className="btn btn-outline bg-sky-100 hover:bg-blue-500" href="clinicform" >Add Your Clinic </Link>
+    <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="docform" >Add Clinic Doctors </Link>
+    <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="docdashboard" > Doctors Dashboard </Link>
+    <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="admindashboard" > Clinic Dashboard </Link>
+    <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerdoctor" > NewDoctor Register </Link>
+    <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerhospital" > NewHospital Register </Link>
 
 </div>
    

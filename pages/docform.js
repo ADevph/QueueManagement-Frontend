@@ -5,7 +5,8 @@ import { useRouter } from 'next/router';
 const DoctorForm = () => {
   const router = useRouter();
   const [doctorData, setDoctorData] = useState({
-    name: '',
+    doctorname: '',
+    clinicname: '',
     specialization: '',
     description: '', // Assuming you need to associate doctors with clinics
   });
@@ -29,17 +30,45 @@ const DoctorForm = () => {
       <h2 className="text-2xl font-semibold mb-4">Add Doctor</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+          <label htmlFor="doctorname" className="block text-sm font-medium text-gray-600">
             Doctor's Name
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={doctorData.name}
+            id="doctorname"
+            name="doctorname"
+            value={doctorData.doctorname}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border rounded-md text-gray-600"
             required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="clinicname" className="block text-sm font-medium text-gray-600">
+            Gender
+          </label>
+          <input
+              type="text"
+              id="gender"
+              name="clinicname"
+              value={doctorData.clinicname}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md text-gray-600"
+              required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="clinicname" className="block text-sm font-medium text-gray-600">
+            Clinic Name
+          </label>
+          <input
+              type="text"
+              id="clinicname"
+              name="clinicname"
+              value={doctorData.clinicname}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md text-gray-600"
+              required
           />
         </div>
         <div className="mb-4">
@@ -52,7 +81,7 @@ const DoctorForm = () => {
             name="specialization"
             value={doctorData.specialization}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border rounded-md text-gray-600"
             required
           />
         </div>
@@ -66,7 +95,7 @@ const DoctorForm = () => {
             name="description"
             value={doctorData.description}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border rounded-md text-gray-600"
             required
           />
         </div>
@@ -212,3 +241,8 @@ export default DoctorForm;
 // };
 
 // export default DoctorForm;
+
+
+
+
+

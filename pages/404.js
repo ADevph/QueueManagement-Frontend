@@ -4,7 +4,7 @@ export default function NotFound(){
 
     return (
         <>
-        not found
+        404 | Not found
         </>
     )
 }

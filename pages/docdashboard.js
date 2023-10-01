@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {ReflectAdapter as http} from "next/dist/server/web/spec-extension/adapters/reflect";
 // import http from '../http'; // Assuming you have an http utility for making API requests
 
 const DocDashboard = () => {

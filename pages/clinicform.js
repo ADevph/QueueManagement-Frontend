@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const ClinicForm = () => {
   const [clinicData, setClinicData] = useState({
-    name: '',
+    clinicname: '',
     address: '',
     googleMapsLocation: '',
   });
@@ -37,16 +37,16 @@ const ClinicForm = () => {
       <h2 className="text-2xl font-semibold mb-4">Add Clinic</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+          <label htmlFor="clinicname" className="block text-sm font-medium text-gray-600">
             Clinic Name
           </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={clinicData.name}
+            id="clinicname"
+            name="clinicname"
+            value={clinicData.clinicname}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border rounded-md text-gray-600"
             required
           />
         </div>
@@ -60,7 +60,7 @@ const ClinicForm = () => {
             name="address"
             value={clinicData.address}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border rounded-md text-gray-600"
             required
           />
         </div>
@@ -74,7 +74,7 @@ const ClinicForm = () => {
             name="googleMapsLocation"
             value={clinicData.googleMapsLocation}
             onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full border rounded-md text-gray-600"
             required
           />
         </div>
