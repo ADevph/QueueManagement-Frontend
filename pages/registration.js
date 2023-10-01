@@ -16,6 +16,8 @@ export default function RegisterPage() {
   const [genderError, setGenderError] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [address , setAddress] = useState("");
+  const [addressError , setAddressError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,6 +34,7 @@ export default function RegisterPage() {
     setGenderError("");
     setEmailError("");
     setPhoneError("");
+    setAddressError("");
     setConfirmPasswordError("");
     setPasswordError("");
   
@@ -64,6 +67,11 @@ export default function RegisterPage() {
   }
   if(!email){
     setEmailError("Enter Your Email");
+    setLoading(false);
+    return;
+  }
+  if (!address) {
+    setAddressError("Enter Address");
     setLoading(false);
     return;
   }
@@ -210,6 +218,22 @@ export default function RegisterPage() {
                 />
                 {emailError && (
                   <p className="text-red-500">{emailError}</p>
+                )}
+              </div>
+
+              <div className="mb-4">
+                <label className="font-semibold text-xl text-black">
+                  Address
+                </label>
+                <input
+                    type="text"
+                    name="address"
+                    placeholder="Enter Address"
+                    className="input-field bg-blue-100 p-1 rounded-lg text-gray-700"
+                    onChange={(e) => setAddress(e.target.value)}
+                />
+                {addressError && (
+                    <p className="text-red-500">{addressError}</p>
                 )}
               </div>
 

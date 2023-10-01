@@ -42,6 +42,7 @@ export default function Home( ) {
     <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="admindashboard" > Clinic Dashboard </Link>
     <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerdoctor" > NewDoctor Register </Link>
     <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerhospital" > NewHospital Register </Link>
+    <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerAdmin" > Admin Register </Link>
 
 </div>
    

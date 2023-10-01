@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
 
-export default function RegisterDoctor() {
+export default function RegisterAdmin() {
     const [firstName , setFirstName] = useState("");
     const [firstNameError , setFirstNameError] = useState("");
     const [lastName , setLastName] = useState("");
@@ -19,12 +19,6 @@ export default function RegisterDoctor() {
     const [phoneError, setPhoneError] = useState("");
     const [address , setAddress] = useState("");
     const [addressError , setAddressError] = useState("");
-    const [specialization , setSpecialization] = useState("");
-    const [specializationError , setSpecializationError] = useState("");
-    const [description , setDescription] = useState("");
-    const [descriptionError , setDescriptionError] = useState("");
-    const [hospitalId , setHospitalId] = useState("");
-    const [hospitalIdError , setHospitalIdError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -42,9 +36,6 @@ export default function RegisterDoctor() {
         setEmailError("");
         setPhoneError("");
         setAddressError("");
-        setSpecializationError("");
-        setDescriptionError("");
-        setHospitalIdError("");
         setPasswordError("");
         setConfirmPasswordError("");
 
@@ -58,8 +49,8 @@ export default function RegisterDoctor() {
             const setFirstNameError = /^[A-Za-z0-9 ]{1,20}$/;
             if (!setFirstNameError.test(firstName)) {
                 setFirstNameError("First name can only contain letters, numbers, and spaces. Maximum length is 20 characters.");
-              setLoading(false);
-              return;
+                setLoading(false);
+                return;
             }
         }
 
@@ -116,24 +107,6 @@ export default function RegisterDoctor() {
             return;
         }
 
-        if (!specialization) {
-            setSpecializationError("Enter Doctor Specialization");
-            setLoading(false);
-            return;
-        }
-
-        if (!description) {
-            setDescriptionError("Enter Doctor Description");
-            setLoading(false);
-            return;
-        }
-
-        if (!hospitalId) {
-            setHospitalIdError("Enter Hospital ID");
-            setLoading(false);
-            return;
-        }
-
         if (!password) {
             setPasswordError("Enter Your Password");
             setLoading(false);
@@ -173,15 +146,15 @@ export default function RegisterDoctor() {
 
     return (
         <>
-            <Title page="Doctor Registration" />
+            <Title page="Admin Registration" />
             <Layout>
                 <div className="flex items-center justify-center h-screen">
                     <div className="relative flex flex-col items-center justify-center rounded-xl bg-white shadow-md p-8 w-128">
                         <h4 className="block font-sans text-2xl font-bold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                            Doctor Registration
+                            Admin Registration
                         </h4>
                         <p className="mt-1 mb-6 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                            Enter doctor details to register.
+                            Enter Admin details to register.
                         </p>
 
                         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
@@ -310,54 +283,6 @@ export default function RegisterDoctor() {
 
                             <div className="mb-4">
                                 <label className="font-semibold text-xl text-black">
-                                    Specialization
-                                </label>
-                                <input
-                                    type="text"
-                                    name="specialization"
-                                    placeholder="Enter Doctor Specialization"
-                                    className="input-field bg-blue-100 p-1 rounded-lg text-gray-700"
-                                    onChange={(e) => setSpecialization(e.target.value)}
-                                />
-                                {specializationError && (
-                                    <p className="text-red-500">{specializationError}</p>
-                                )}
-                            </div>
-
-                            <div className="mb-4">
-                                <label className="font-semibold text-xl text-black">
-                                    Description
-                                </label>
-                                <input
-                                    type="text"
-                                    name="description"
-                                    placeholder="Enter Doctor Description"
-                                    className="input-field bg-blue-100 p-1 rounded-lg text-gray-700"
-                                    onChange={(e) => setDescription(e.target.value)}
-                                />
-                                {descriptionError && (
-                                    <p className="text-red-500">{descriptionError}</p>
-                                )}
-                            </div>
-
-                            <div className="mb-4">
-                                <label className="font-semibold text-xl text-black">
-                                    Hospital ID
-                                </label>
-                                <input
-                                    type="number"
-                                    name="hospitalid"
-                                    placeholder="Enter Hospital ID"
-                                    className="input-field bg-blue-100 p-1 rounded-lg text-gray-700"
-                                    onChange={(e) => setHospitalId(e.target.value)}
-                                />
-                                {hospitalIdError && (
-                                    <p className="text-red-500">{hospitalIdError}</p>
-                                )}
-                            </div>
-
-                            <div className="mb-4">
-                                <label className="font-semibold text-xl text-black">
                                     Password
                                 </label>
                                 <input
@@ -394,7 +319,7 @@ export default function RegisterDoctor() {
                                 className="btn btn-outline btn-secondary"
                                 type="submit"
                             >
-                                Register Doctor
+                                Register Admin
                             </button>
                             {error && (<p className="text-red-500">{error}</p>)}
 
