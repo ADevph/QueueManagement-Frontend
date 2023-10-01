@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 // const Layout = dynamic(() => import('./Layout/layout'), {
 //   ssr: false,
 // })
-const Title = dynamic(() => import('./Layout/title'), {
+const Title = dynamic(() => import('./components/title'), {
   ssr: false,
 })
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import Layout from './layout/layout';
+import Layout from './components/layout';
 import Link from 'next/link';
 
 export default function Login() {
@@ -44,10 +44,10 @@ export default function Login() {
         <>
 
             <Layout title="Login - Queue Management">
-                <section className="bg-cover bg-center bg-[url('/apple_bg.jpg')]">
-                    <div className="flex flex-col justify-center items-center w-full min-h-screen bg-black bg-opacity-60">
+                <section className="flex justify-center">
+                    <div className="flex flex-col justify-center items-center w-full min-h-screen max-w-[1600px]">
                         <div className='flex w-full mt-[100px] justify-center'>
-                            <h1 className="text-2xl font-semibold text-neutral-50">Login</h1>
+                            <h1 className="text-2xl font-semibold text-indigo-600">Login</h1>
                         </div>
                         <div className="bg-slate-100 w-80 h-fit p-8 border rounded-md shadow-lg mt-4 mb-[70px] mx-auto">
                             <form onSubmit={handleSubmit(onSubmit)} encType="application/json" action="#">
