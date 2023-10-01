@@ -44,65 +44,99 @@ const DoctorForm = () => {
       console.log("Form submitted successfully!");
       router.push("/docdashboard");
     } catch (error) {
-      console.error('Error occurred while adding doctor:', error);
+      console.error("Error occurred while adding doctor:", error);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-md shadow-lg">
-      <h2 className="text-2xl font-semibold mb-4">Add Doctor</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-600">
-            Doctor's Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            onChange={(e) => setDocName(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md text-black"
-          />
-          {docNameError && (
-            <p className="text-black">{docNameError}</p>
-          )}
+    <div>
+      <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-md shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4">Add Doctor</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-600"
+            >
+              Doctor's Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              onChange={(e) => setDocName(e.target.value)}
+              className="mt-1 p-2 w-full border rounded-md text-black"
+            />
+            {docNameError && <p className="text-black">{docNameError}</p>}
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="specialization"
+              className="block text-sm font-medium text-gray-600"
+            >
+              Specialization
+            </label>
+            <input
+              type="text"
+              id="specialization"
+              name="specialization"
+              onChange={(e) => setSpecilization(e.target.value)}
+              className="mt-1 p-2 w-full border rounded-md text-black"
+            />
+            {specilizationError && (
+              <p className="text-black">{specilizationError}</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-600"
+            >
+              Doctor Description
+            </label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              onChange={(e) => setDocDescription(e.target.value)}
+              className="mt-1 p-2 w-full border rounded-md text-black"
+            />
+            {docDescriptionError && (
+              <p className="text-black">{docDescriptionError}</p>
+            )}
+          </div>
+          <div className="mt-6">
+            <button
+              type="submit"
+              className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+            >
+              Add Doctor
+            </button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <div className="flex items-center justify-center gap-10 p-4">
+          <Link
+            href="/docform"
+            className="btn btn-outline bg-sky-100 hover:bg-blue-500 text-black"
+          >
+            Add Clinic Doctors
+          </Link>
+          <Link
+            href="/docdashboard"
+            className="btn btn-outline bg-sky-100 hover:bg-blue-500 text-black"
+          >
+            Doctors Dashboard
+          </Link>
+          <Link
+            href="/admindashboard"
+            className="btn btn-outline bg-sky-100 hover:bg-blue-500 text-black"
+          >
+            Clinic Dashboard
+          </Link>
         </div>
-        <div className="mb-4">
-          <label htmlFor="specialization" className="block text-sm font-medium text-gray-600">
-            Specialization
-          </label>
-          <input
-            type="text"
-            id="specialization"
-            name="specialization"
-            onChange={(e) => setSpecilization(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md text-black"
-          />
-          {specilizationError && (
-            <p className="text-black">{specilizationError}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="description" className="block text-sm font-medium text-gray-600">
-            Doctor Description
-          </label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            onChange={(e) => setDocDescription(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md text-black"
-          />
-          {docDescriptionError && (
-            <p className="text-black">{docDescriptionError}</p>
-          )}
-        </div>
-        <div className="mt-6">
-          <button type="submit" className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">
-            Add Doctor
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };
