@@ -10,12 +10,11 @@ export default function Layout (
        
         <>
        
-<PatientHeader> </PatientHeader>
+            <PatientHeader> </PatientHeader>
 
+              {children}
 
-  {children}
-  
-<Footer/>
+            <Footer/>
 
         </>
       

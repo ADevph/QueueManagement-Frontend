@@ -69,7 +69,7 @@ return (
       <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="loginform" > Sign In </Link> </li>
       <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="admin" > Admin </Link> </li>
       <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="registration" > Sign Up </Link></li>
-      <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="superAdmin" > Super Admin </Link></li>
+      <li className="hover:bg-blue-400 rounded-lg"> <Link className="" href="SuperAdmin/superAdmin" > Super Admin </Link></li>
     
     </ul>
  

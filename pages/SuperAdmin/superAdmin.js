@@ -1,10 +1,10 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-const SLayout = dynamic(() => import('./Layout/slayout'), {
+const SLayout = dynamic(() => import('../Layout/slayout'), {
     ssr: false,
 })
-const Title = dynamic(() => import('./Layout/title'), {
+const Title = dynamic(() => import('../Layout/title'), {
     ssr: false,
 })
 
