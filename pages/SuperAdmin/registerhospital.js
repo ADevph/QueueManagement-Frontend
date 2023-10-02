@@ -4,24 +4,30 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 
 export default function RegisterDoctor() {
-    const [hospitalName , setHospitalName] = useState("");
+    const [hospitalname , setHospitalName] = useState("");
     const [hospitalNameError , setHospitalNameError] = useState("");
     const [location, setLocation] = useState("");
     const [locationError, setLocationError] = useState("");
+    const [adminid , setAdminId] = useState("");
+    const [adminIdError , setAdminIdError] = useState("");
 
     const [error, setError] = useState("");
     const router = useRouter();
     const { handleSubmit } = useForm();
-    const[loading,setLoading]=useState(false);
+    const [loading,setLoading]=useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
 
     const onSubmit = async () => {
         setHospitalNameError("");
         setLocationError("");
+        setAdminIdError("");
 
-        if (!hospitalName) {
+
+        if (!hospitalname) {
             setHospitalNameError("Enter Hospital Name");
             setLoading(false);
             return;
@@ -32,19 +38,56 @@ export default function RegisterDoctor() {
             setLoading(false);
             return;
         }
-
-        try {
-            //const response = await.axios.post......................
-
-
-            console.log("Success");
-        }
-        catch (error) {
-            setError(error);
+        if(!adminid) {
+            setAdminIdError("Enter admin ID")
             setLoading(false);
             return;
         }
-    }
+
+
+
+        // try {
+        //     const response = await axios.post(
+        //         "http://localhost:8000/api/hospital/registration",
+        //         {
+        //             hospitalname,
+        //             location,
+        //             adminid,
+        //         }
+        //     );
+        //     console.log("Success");
+        //     toast.success("Registration successful", {
+        //         position: "top-right",
+        //         autoClose: 3000,
+        //     });
+        // } catch (error) {
+        //     setError(error.message);
+        //     setLoading(false);
+        //     toast.error("Registration failed", {
+        //         position: "top-right",
+        //         autoClose: 3000,
+        //     });
+        // }
+
+        try {
+            const response = await axios.post(
+                "http://localhost:8000/api/hospital/registration", // Replace with your actual backend endpoint URL
+                {
+                    hospitalname,
+                    location,
+                    adminid,
+                }
+            );
+
+            console.log("Success");
+            setSuccessMessage(error.message);
+            setError('');
+        } catch (error) {
+            setError(error.message);
+            setSuccessMessage('');
+            setLoading(false);
+        }
+    };
 
 
     return (
@@ -93,13 +136,29 @@ export default function RegisterDoctor() {
                                 )}
                             </div>
 
-                            <div>
+                            <div className="mb-4">
+                                <label className="font-semibold text-xl text-black">
+                                    Admin ID
+                                </label>
                                 <input
-                                    type="hidden"
-                                    name="adminID"
-                                    value={"adminID"} // Replace with the actual value of adminID get from backend in time of login to the system.
+                                    type="text"
+                                    name="adminid"
+                                    placeholder="Enter Hospital Location"
+                                    className="input-field bg-blue-100 p-1 rounded-lg text-gray-700"
+                                    onChange={(e) => setAdminId(e.target.value)}
                                 />
+                                {adminIdError && (
+                                    <p className="text-red-500">{adminIdError}</p>
+                                )}
                             </div>
+
+                            {/*<div>*/}
+                            {/*    <input*/}
+                            {/*        type="hidden"*/}
+                            {/*        name="adminID"*/}
+                            {/*        value={"adminID"} // Replace with the actual value of adminID get from backend in time of login to the system.*/}
+                            {/*    />*/}
+                            {/*</div>*/}
 
                             <button
                                 className="btn btn-outline btn-secondary"
@@ -107,8 +166,14 @@ export default function RegisterDoctor() {
                             >
                                 Register Hospital
                             </button>
-                            {error && (<p className="text-red-500">{error}</p>)}
 
+                            <div className="mb-4">
+                                <label className="font-semibold text-xl text-black">
+                                    {successMessage && <div className="success-message">{successMessage}</div>}
+                                    {error && <div className="error-message">{error}</div>}
+                                </label>
+
+                            </div>
 
                         </form>
                     </div>

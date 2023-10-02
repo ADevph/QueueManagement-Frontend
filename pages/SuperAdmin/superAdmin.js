@@ -28,8 +28,8 @@ export default function Home( ) {
 
 
             <div className=" flex items-center justify-center gap-10 p-4">
-                <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerdoctor" > NewDoctor Register </Link>
-                <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerhospital" > NewHospital Register </Link>
+                <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerdoctor" > New Doctor Register </Link>
+                <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerhospital" > New Hospital Register </Link>
                 <Link className="btn btn-outline bg-sky-100  hover:bg-blue-500" href="registerAdmin" > Admin Register </Link>
 
             </div>

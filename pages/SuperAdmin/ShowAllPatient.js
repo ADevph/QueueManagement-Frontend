@@ -17,7 +17,7 @@ export function ShowAllPatient() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const apiUrl = 'http://localhost:8000/api/doctor/all';
+        const apiUrl = 'http://localhost:8000/api/patient/all';
 
         axios
             .get(apiUrl)
@@ -53,7 +53,7 @@ export function ShowAllPatient() {
             <SLayout>
 
                 <div className="hover:bg-cyan-200  text-4xl text-center text-black bg-slate-200 p-2">
-                    <h1> All Doctor List </h1>
+                    <h1> All Patient List </h1>
                 </div>
 
 
@@ -64,7 +64,7 @@ export function ShowAllPatient() {
                         <table style={tableStyle}>
                             <thead>
                             <tr>
-                                <th style={headerCellStyle}>Doctor ID</th>
+                                <th style={headerCellStyle}>Patient ID</th>
                                 <th style={headerCellStyle}>First Name</th>
                                 <th style={headerCellStyle}>Last Name</th>
                                 <th style={headerCellStyle}>Gender</th>

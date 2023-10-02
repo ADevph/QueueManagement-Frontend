@@ -11,13 +11,13 @@ const Title = dynamic(() => import('../Layout/title'), {
 })
 
 
-export function ShowAllPatient() {
+export function ShowAllHospital() {
 
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const apiUrl = 'http://localhost:8000/api/doctor/all';
+        const apiUrl = 'http://localhost:8000/api/hospital/all';
 
         axios
             .get(apiUrl)
@@ -53,7 +53,7 @@ export function ShowAllPatient() {
             <SLayout>
 
                 <div className="hover:bg-cyan-200  text-4xl text-center text-black bg-slate-200 p-2">
-                    <h1> All Doctor List </h1>
+                    <h1> All Hospital List </h1>
                 </div>
 
 
@@ -64,25 +64,17 @@ export function ShowAllPatient() {
                         <table style={tableStyle}>
                             <thead>
                             <tr>
-                                <th style={headerCellStyle}>Doctor ID</th>
-                                <th style={headerCellStyle}>First Name</th>
-                                <th style={headerCellStyle}>Last Name</th>
-                                <th style={headerCellStyle}>Gender</th>
-                                <th style={headerCellStyle}>Phone</th>
-                                <th style={headerCellStyle}>Email</th>
-                                <th style={headerCellStyle}>Address</th>
+                                <th style={headerCellStyle}>Hospital ID</th>
+                                <th style={headerCellStyle}>Hospital Name</th>
+                                <th style={headerCellStyle}>Hospital Location</th>
                             </tr>
                             </thead>
                             <tbody>
                             {data.map((item, index) => (
                                 <tr key={index}>
                                     <td style={cellStyle}>{item.id}</td>
-                                    <td style={cellStyle}>{item.first_name}</td>
-                                    <td style={cellStyle}>{item.last_name}</td>
-                                    <td style={cellStyle}>{item.gender}</td>
-                                    <td style={cellStyle}>{item.phone}</td>
-                                    <td style={cellStyle}>{item.email}</td>
-                                    <td style={cellStyle}>{item.address}</td>
+                                    <td style={cellStyle}>{item.hospitalname}</td>
+                                    <td style={cellStyle}>{item.location}</td>
                                 </tr>
                             ))}
                             </tbody>
@@ -107,4 +99,4 @@ export function ShowAllPatient() {
     );
 }
 
-export default ShowAllPatient;
+export default ShowAllHospital;

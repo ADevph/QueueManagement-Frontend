@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
 
+
 export default function RegisterDoctor() {
     const [firstName , setFirstName] = useState("");
     const [firstNameError , setFirstNameError] = useState("");
@@ -159,6 +160,10 @@ export default function RegisterDoctor() {
         }
         try {
             //const response = await.axios.post......................
+            const sadmin = localStorage.getItem("user");
+            const supadmin = JSON.parse(sadmin);
+            const id = supadmin.id;
+
 
 
             console.log("Success");
@@ -180,6 +185,7 @@ export default function RegisterDoctor() {
                         <h4 className="block font-sans text-2xl font-bold leading-snug tracking-normal text-blue-gray-900 antialiased">
                             Doctor Registration
                         </h4>
+
                         <p className="mt-1 mb-6 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                             Enter doctor details to register.
                         </p>
