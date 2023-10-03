@@ -31,6 +31,15 @@ export function ShowAllPatient() {
             });
     }, []);
 
+    const deletePatient = (id) => {
+        axios
+            .delete(`http://localhost:8000/api/patient/delete/${id}`)
+
+            .catch((error) => {
+                console.error('Error deleting task:', error);
+            });
+    };
+
     const tableStyle = {
         width: '100%',
         borderCollapse: 'collapse',
@@ -71,6 +80,7 @@ export function ShowAllPatient() {
                                 <th style={headerCellStyle}>Phone</th>
                                 <th style={headerCellStyle}>Email</th>
                                 <th style={headerCellStyle}>Address</th>
+                                <th style={headerCellStyle}>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -83,6 +93,9 @@ export function ShowAllPatient() {
                                     <td style={cellStyle}>{item.phone}</td>
                                     <td style={cellStyle}>{item.email}</td>
                                     <td style={cellStyle}>{item.address}</td>
+                                    <td>
+                                        <button type="button" className="btn btn-danger" onClick={()=>{deletePatient(item.id)}}>Delete</button>
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>

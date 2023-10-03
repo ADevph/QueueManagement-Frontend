@@ -13,6 +13,15 @@ const Title = dynamic(() => import('../Layout/title'), {
 
 export function ShowAllAdmin() {
 
+    const deleteAdmin = (id) => {
+        axios
+            .delete(`http://localhost:8000/api/admin/delete/${id}`)
+
+            .catch((error) => {
+                console.error('Error deleting task:', error);
+            });
+    };
+
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -30,6 +39,8 @@ export function ShowAllAdmin() {
                 setIsLoading(false); // Set loading to false in case of an error
             });
     }, []);
+
+
 
     const tableStyle = {
         width: '100%',
@@ -71,6 +82,7 @@ export function ShowAllAdmin() {
                             <th style={headerCellStyle}>Phone</th>
                             <th style={headerCellStyle}>Email</th>
                             <th style={headerCellStyle}>Address</th>
+                            <th style={headerCellStyle}>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -83,6 +95,9 @@ export function ShowAllAdmin() {
                                 <td style={cellStyle}>{item.phone}</td>
                                 <td style={cellStyle}>{item.email}</td>
                                 <td style={cellStyle}>{item.address}</td>
+                                <td>
+                                    <button type="button" className="btn btn-danger" onClick={()=>{deleteAdmin(item.id)}}>Delete</button>
+                                </td>
                             </tr>
                         ))}
                         </tbody>

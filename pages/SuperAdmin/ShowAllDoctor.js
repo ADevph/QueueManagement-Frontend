@@ -31,6 +31,14 @@ export function ShowAllPatient() {
             });
     }, []);
 
+    const deleteDoctor = (id) => {
+        axios
+            .delete(`http://localhost:8000/api/doctor/delete/${id}`)
+            .catch((error) => {
+                console.error('Error deleting task:', error);
+            });
+    };
+
     const tableStyle = {
         width: '100%',
         borderCollapse: 'collapse',
@@ -83,6 +91,9 @@ export function ShowAllPatient() {
                                     <td style={cellStyle}>{item.phone}</td>
                                     <td style={cellStyle}>{item.email}</td>
                                     <td style={cellStyle}>{item.address}</td>
+                                    <td>
+                                        <button type="button" className="btn btn-danger" onClick={()=>{deleteDoctor(item.id)}}>Delete</button>
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>

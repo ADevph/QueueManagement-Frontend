@@ -13,6 +13,8 @@ const Title = dynamic(() => import('../Layout/title'), {
 
 export function ShowAllHospital() {
 
+
+    const shouldRedirect = false;
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -30,6 +32,14 @@ export function ShowAllHospital() {
                 setIsLoading(false); // Set loading to false in case of an error
             });
     }, []);
+
+    const deleteHospital = (id) => {
+        axios
+            .delete(`http://localhost:8000/api/hospital/delete/${id}`)
+            .catch((error) => {
+                console.error('Error deleting task:', error);
+            });
+    };
 
     const tableStyle = {
         width: '100%',
@@ -67,6 +77,7 @@ export function ShowAllHospital() {
                                 <th style={headerCellStyle}>Hospital ID</th>
                                 <th style={headerCellStyle}>Hospital Name</th>
                                 <th style={headerCellStyle}>Hospital Location</th>
+                                <th style={headerCellStyle}>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -75,6 +86,9 @@ export function ShowAllHospital() {
                                     <td style={cellStyle}>{item.id}</td>
                                     <td style={cellStyle}>{item.hospitalname}</td>
                                     <td style={cellStyle}>{item.location}</td>
+                                    <td>
+                                        <button type="button" className="btn btn-danger" onClick={()=>{deleteHospital(item.id)}}>Delete</button>
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>
