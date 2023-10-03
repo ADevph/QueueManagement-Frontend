@@ -125,7 +125,7 @@ export default function RegisterDoctor() {
             setLoading(false);
             return;
         }
-        
+
         if (password !== confirmPassword) {
             setConfirmPasswordError("Confirm Password should be same as Password");
             setLoading(false);
@@ -149,7 +149,7 @@ export default function RegisterDoctor() {
             setLoading(false);
             return;
         }
-        
+
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/doctor/registration',
                 {
@@ -171,7 +171,7 @@ export default function RegisterDoctor() {
                 withCredentials: true
             });
 
-            if (response.data.error){
+            if (response.data.error) {
                 if (response.data.error == "no token provided" || response.data.error == "invalid token") {
                     localStorage.clear();
                     router.push('/login');
@@ -191,9 +191,9 @@ export default function RegisterDoctor() {
                 setError("");
                 setSuccess("Doctor Registered Successfully");
                 reset();
-                // setTimeout(() => {
-                //     router.push('/admin');
-                // }, 3000);
+                setTimeout(() => {
+                    router.push('/admin');
+                }, 3000);
             }
 
         }
@@ -206,7 +206,7 @@ export default function RegisterDoctor() {
     }
 
 
-    
+
 
 
     return (
@@ -218,8 +218,9 @@ export default function RegisterDoctor() {
                         <h4 className="my-[20px] block font-sans text-2xl font-bold leading-snug tracking-normal text-blue-gray-900 antialiased">
                             Register Doctor
                         </h4>
-                        <div className="relative flex items-center justify-center rounded-md bg-white shadow-md p-8 w-80 h-fit">
+                        <hr className="w-8/12 border border-y-gray-300 mb-[20px]" />
 
+                        <div className="relative flex items-center justify-center rounded-md bg-white shadow-md p-8 w-80 h-fit">
                             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                                 <div className="flex flex-col w-full justify-center mb-4">
                                     <label className="font-semibold text-sm text-black">

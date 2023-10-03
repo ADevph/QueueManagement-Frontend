@@ -55,9 +55,9 @@ export default function RegisterHospitalByAdmin() {
                 setError("");
                 setSuccess("Hospital Registered Successfully");
                 reset();
-                // setTimeout(() => {
-                //     router.push('/admin');
-                // }, 3000);
+                setTimeout(() => {
+                    router.push('/admin');
+                }, 3000);
             }
         }
         catch (error) {
@@ -76,7 +76,7 @@ export default function RegisterHospitalByAdmin() {
                         <h4 className="my-[20px] block font-sans text-2xl font-bold leading-snug tracking-normal text-blue-gray-900 antialiased">
                             Register Hospital
                         </h4>
-                        <hr className="w-8/12 border border-y-gray-800 mb-[20px]" />
+                        <hr className="w-8/12 border border-y-gray-300 mb-[20px]" />
 
                         <div className="relative flex items-center justify-center rounded-md bg-white shadow-md p-8 w-80 h-fit">
                             <form onSubmit={handleSubmit(onSubmit)} className="w-full">

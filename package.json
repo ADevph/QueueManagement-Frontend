@@ -11,8 +11,9 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "axios": "^1.5.1",
+    "date-fns": "^2.30.0",
     "js-cookie": "^3.0.5",
-    "next": "latest",
+    "next": "^13.5.4",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.46.2"

@@ -150,7 +150,7 @@ export default function NavBarOptions() {
                                                                 ) :
                                                                     (
                                                                         <div className='flex md:flex-row flex-col md:justify-evenly justify-center items-center md:gap-10 gap-4'>
-                                                                            <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Admin Dashboard</Link>
+                                                                            <Link href="/admin" className="text-gray-900 hover:text-indigo-700 transition duration-200">Dashboard</Link>
                                                                             <div className="relative flex">
                                                                                 <button className="flex justify-center group" onClick={handleMouseClick}>
                                                                                     <UserCircleIcon className="h-6 w-6 text-gray-900 hover:text-indigo-700 transition duration-300" />
