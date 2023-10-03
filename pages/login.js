@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Layout from './components/layout';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 export default function Login() {
     const {
@@ -17,7 +18,7 @@ export default function Login() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post('http://localhost:8000/api/login',
+            const response = await axios.post('http://127.0.0.1:8000/api/login',
                 {
                     email: data.email,
                     password: data.password
@@ -25,14 +26,27 @@ export default function Login() {
                 headers: {
                     "Content-Type": "application/json"
                 },
+                withCredentials: true
             });
 
-            if (response.data == "invalid credentials") {
-                setErrormsg(response.data);
+            if (response.data.message == "email does not exist" || response.data.message == "incorrect password" || response.data.message == "verify your email before login") {
+                setErrormsg(response.data.message);
             } else {
-                //write code to set cookies
-                console.log(response.data);
-                router.push('/');
+                // const expInMillis = 10 * 60 * 1000;
+                // const expDate = new Date(Date.now() + expInMillis);
+                // Cookies.set('jwtoken', response.data.token, { expires: expDate, httpOnly: true });
+                // Cookies.set('uid', response.data.user.id, { expires: expDate, httpOnly: true });
+                localStorage.setItem('jwtoken', response.data.token);
+                localStorage.setItem('user', JSON.stringify(response.data.user));
+                if(response.data.user.role == 0){
+                    router.push('/');
+                } else if(response.data.user.role == 1){
+                    router.push('/');
+                } else if(response.data.user.role == 2){
+                    router.push('/doctor');
+                } else if(response.data.user.role == 3){
+                    router.push('/admin');
+                }
             }
         } catch (error) {
             console.error(error);
@@ -43,7 +57,7 @@ export default function Login() {
     return (
         <>
 
-            <Layout title="Login - Queue Management">
+            <Layout title="Login - Medical Service">
                 <section className="flex justify-center">
                     <div className="flex flex-col justify-center items-center w-full min-h-screen max-w-[1600px]">
                         <div className='flex w-full mt-[100px] justify-center'>
@@ -95,7 +109,7 @@ export default function Login() {
                                         </div>
                                     }
                                     <div className='flex w-full mt-4 justify-center'>
-                                        <h4 className='font-semibold text-sm text-gray-700 py-2'>Don&apos;t have an account?&nbsp;&nbsp;<Link href="/signup" className='text-indigo-600'>Sign up</Link></h4>
+                                        <h4 className='font-semibold text-sm text-gray-700 py-2'>Don&apos;t have an account?&nbsp;&nbsp;<Link href="/register" className='text-indigo-600'>Sign up</Link></h4>
                                     </div>
                                 </div>
                             </form>

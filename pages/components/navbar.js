@@ -14,7 +14,8 @@ export default function NavigationBar() {
                             <span className="text-gray-700 text-[20px] font-semibold">Queue&nbsp;</span><span className="text-indigo-700 text-[20px] font-semibold">Management</span>
                         </Link>
                     </div>
-                    <div className="font-semibold text-[14px] text-gray-900 mr-2 flex md:flex-row flex-col md:justify-evenly justify-center items-center md:gap-10 gap-4">
+                    <div className="font-semibold text-[15px] text-gray-900 mr-2 flex md:flex-row flex-col md:justify-evenly justify-center items-center md:gap-10 gap-4">
+                        <Link href="/" className="hover:text-indigo-700 transition duration-200">Home</Link>
                         <NavBarOptions />
                     </div>
                 </div>
