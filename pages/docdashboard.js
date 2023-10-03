@@ -34,7 +34,7 @@ function DocDashboard() {
   return (
     <div>
       <div className="flex items-center justify-center gap-2 p-4"> {/* Reduced gap */}
-    <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="clinicform">
+    {/* <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="clinicform">
       Add Your Clinic
     </Link>
     <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="docform">
@@ -45,9 +45,9 @@ function DocDashboard() {
     </Link>
     <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="admindashboard">
       Clinic Dashboard
-    </Link>
+    </Link> */}
   </div>
-      <h1 className="font-bold text-2xl p-2 m-4">All Doctors</h1>
+      <h1 className="font-bold text-2xl p-2 m-4"> Doctors Dashboard</h1>
       <hr className="font-extrabold p-2" />
       <table className="table">
         <thead>

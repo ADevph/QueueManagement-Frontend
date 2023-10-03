@@ -7,27 +7,52 @@ function DocSearch() {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
   const [search, setSearch] = useState("");
-  const [searchList, setSearchList] = useState({ hospitals: [], doctors: [], users: [] });
+  const [searchError, setSearchError] = useState("");
+  const [searchDocList, setSearchDocList] = useState([]);
 
   const onSubmit = async () => {
+    if (!search) {
+      setSearchError("Search by doctor name is required.");
+      return;
+    }
+
     try {
-      var storeUser = JSON.parse(localStorage.getItem('user'));
-      let token = storeUser.token;
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+      const storeUser = JSON.parse(localStorage.getItem("user"));
+      const token = storeUser.token;
 
-      const response = await axios.post("http://127.0.0.1:8000/api/search/active", {
-        query: search,
-      }, config);
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      }
 
-      setSearchList(response.data);
-      console.log(response.data);
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/search/active",
+        {
+          query: search,
+        }
+      );
 
+      setSearchDocList(response.data.doctors);
+      console.log(response.data.doctors);
     } catch (error) {
       console.error("Error while fetching search results:", error);
+    }
+  };
+
+  const handleAppointmentClick = async (doctorId) => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const userId = userData.id;
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/create/appointment",
+        {
+          patient_id: userId,
+          doctor_id: doctorId,
+        }
+      );
+     console.log("appoinment created");
+    } catch (error) {
+      console.error("Error while creating an appointment:", error);
     }
   };
 
@@ -45,38 +70,35 @@ function DocSearch() {
             onChange={(e) => setSearch(e.target.value)}
           />
           <button type="submit">Go</button>
+          <br />
+          {searchError && <p>{searchError}</p>}
         </div>
       </form>
       <hr />
       <div>
-        {(searchList.hospitals.length > 0 || searchList.doctors.length > 0 || searchList.users.length > 0) ? (
-          <div>
-            <h2>Hospitals</h2>
-            <ul>
-              {searchList.hospitals.map((hospital, index) => (
-                <li key={index}>
-                  {hospital.hospitalname}, {hospital.location}
-                </li>
-              ))}
-            </ul>
-
-            <h2>Doctors</h2>
-            <ul>
-              {searchList.doctors.map((doctor, index) => (
-                <li key={index}>{doctor.specialization}</li>
-              ))}
-            </ul>
-
-            {/* Uncomment this section if you want to display user results */}
-            {/* <h2>Users</h2>
-            <ul>
-              {searchList.users.map((user, index) => (
-                <li key={index}>
-                  {user.first_name} {user.last_name}, {user.address}, {user.email}
-                </li>
-              ))}
-            </ul> */}
-          </div>
+        {searchDocList.length > 0 ? (
+          <ul>
+            {searchDocList.map((doctor, index) => (
+              <li key={index}>
+                <p>
+                  Doctor Name: {doctor.first_name} {doctor.last_name}
+                </p>
+                <p>Gender: {doctor.gender}</p>
+                <p>Specialist: {doctor.specialization}</p>
+                <p>Hospital: {doctor.hospitalname}</p>
+                <p>Location: {doctor.location}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleAppointmentClick(doctor.id);
+                  }}
+                >
+                  Appointment
+                </button>
+                <hr />
+              </li>
+            ))}
+          </ul>
         ) : (
           <p>No search results found.</p>
         )}
