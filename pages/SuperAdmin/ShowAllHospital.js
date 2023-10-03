@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import dynamic from "next/dynamic";
+//import { Link } from "react-router-dom";
+//import Link from 'next/link';
+
 
 
 const SLayout = dynamic(() => import('../Layout/slayout'), {
@@ -17,6 +21,7 @@ export function ShowAllHospital() {
     const shouldRedirect = false;
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
         const apiUrl = 'http://localhost:8000/api/hospital/all';
@@ -40,6 +45,10 @@ export function ShowAllHospital() {
                 console.error('Error deleting task:', error);
             });
     };
+
+    const editHospital = (id) => {
+        router.push(`/editHospital?id=${id}`);
+    }
 
     const tableStyle = {
         width: '100%',
@@ -87,6 +96,10 @@ export function ShowAllHospital() {
                                     <td style={cellStyle}>{item.hospitalname}</td>
                                     <td style={cellStyle}>{item.location}</td>
                                     <td>
+                                        {/*<Link pathname={`/editHospital/${item.id}`}>*/}
+                                        {/*    Edit*/}
+                                        {/*</Link>&nbsp;*/}
+                                        {/*<Link className="btn btn-info" to={{ pathname: `/editHospital/${item.id}`, state: { item } }}>Edit</Link>&nbsp;*/}
                                         <button type="button" className="btn btn-danger" onClick={()=>{deleteHospital(item.id)}}>Delete</button>
                                     </td>
                                 </tr>
