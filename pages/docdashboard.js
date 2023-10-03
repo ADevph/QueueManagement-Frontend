@@ -6,55 +6,54 @@ import { useForm } from "react-hook-form";
 
 function DocDashboard() {
   const [doctors, setDoctors] = useState([]);
+  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     fetchAllDoctors();
+    setMsg("");
   }, []);
 
-  const fetchAllDoctors = () => {
-    // http.get('/doctors').then((res) => {
-    // setDoctors(res.data);
-    // });
+  const fetchAllDoctors = async () => {
+    try {
+      const userData = JSON.parse(localStorage.getItem("user"));
+      const userId = userData.id;
+      const token = userData.token; 
+
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      }
+
+      const response = await axios.get(`http://127.0.0.1:8000/api/view/appointment/${userId}`);
+      setDoctors(response.data);
+    } catch (error) {
+      console.error("Error while fetching doctors:", error);
+    }
   };
 
-  const deleteDoctor = async (id) => {
+  const next = async (id) => {
     try {
-      // const response = await axios.delete(`/api/doctors/${id}`);
-
-      if (response.status === 200) {
-        console.log("Doctor deleted successfully");
+      const response = await axios.post(`http://127.0.0.1:8000/api/sms/notification/${id}`);
+      if (response.data.message === "SMS send Successfully.") {
+        setMsg("Notification send");
       } else {
-        console.error("Failed to delete doctor.");
+        setMsg("Notification send failed");
       }
     } catch (error) {
-      console.error("Error deleting doctor:", error);
+      console.error("Error while sending notification:", error);
+      setMsg("Try again");
     }
   };
 
   return (
     <div>
-      <div className="flex items-center justify-center gap-2 p-4"> {/* Reduced gap */}
-    {/* <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="clinicform">
-      Add Your Clinic
-    </Link>
-    <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="docform">
-      Add Clinic Doctors
-    </Link>
-    <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="docdashboard">
-      Doctors Dashboard
-    </Link>
-    <Link className="btn btn-outline btn-sm bg-sky-100 hover:bg-blue-500" href="admindashboard">
-      Clinic Dashboard
-    </Link> */}
-  </div>
       <h1 className="font-bold text-2xl p-2 m-4"> Doctors Dashboard</h1>
       <hr className="font-extrabold p-2" />
+      <p>{msg}</p> {/* Display the message here */}
       <table className="table">
         <thead>
           <tr>
             <th className="text-white">Serial</th>
             <th className="text-white">Name</th>
-            <th className="text-white">Specialization</th>
             <th className="text-white">Action</th>
           </tr>
         </thead>
@@ -63,16 +62,15 @@ function DocDashboard() {
             <tr key={doctor.id}>
               <td>{++index}</td>
               <td>{doctor.name}</td>
-              <td>{doctor.specialization}</td>
               <td>
                 <button
                   type="button"
                   className="btn btn-danger"
                   onClick={() => {
-                    deleteDoctor(doctor.id);
+                    next(doctor.id);
                   }}
                 >
-                  Delete
+                  Next
                 </button>
               </td>
             </tr>
