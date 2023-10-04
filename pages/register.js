@@ -109,14 +109,14 @@ export default function Registration() {
         withCredentials: true
       });
 
-      if (response.data.message == "Registration successful. Please verify your email") {
+      if (response.data.message == "Registration successful. Please verify your email.") {
         setError("");
-        setSuccess("Registration successful<br />Please verify your email");
+        setSuccess(<span>Registration successful<br />Please verify your email</span>);
         reset();
         setTimeout(() => {
           router.push('/login');
         }, 4000);
-      } else if (response.data.message == "Registration is successful but verification email is not sent" || response.data.message == "Registration failed") {
+      } else if (response.data.message == "Registration is successful but Validation Email is not sent." || response.data.message == "Registration failed") {
         setSuccess("");
         setError(response.data.message);
       } else {

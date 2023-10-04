@@ -43,7 +43,7 @@ export default function NavBarOptions() {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('jwtoken')}`,
                 },
-            })
+            });
             console.log(response.data);
             localStorage.clear();
             setUser(null);
@@ -95,11 +95,11 @@ export default function NavBarOptions() {
                                             {
                                                 user === 'superadmin' ? (
                                                     <div className='flex md:flex-row flex-col md:justify-evenly justify-center items-center md:gap-10 gap-4'>
-                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Superadmin Dashboard</Link>
-                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Admins</Link>
-                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Hospitals</Link>
-                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Doctors</Link>
-                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Patients</Link>
+                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Dashboard</Link>
+                                                        <Link href="/SuperAdmin/ShowAllAdmin" className="text-gray-900 hover:text-indigo-700 transition duration-200">Admins</Link>
+                                                        <Link href="/SuperAdmin/ShowAllHospital" className="text-gray-900 hover:text-indigo-700 transition duration-200">Hospitals</Link>
+                                                        <Link href="/SuperAdmin/ShowAllDoctor" className="text-gray-900 hover:text-indigo-700 transition duration-200">Doctors</Link>
+                                                        <Link href="/SuperAdmin/ShowAllPatient" className="text-gray-900 hover:text-indigo-700 transition duration-200">Patients</Link>
                                                         <div className="relative flex">
                                                             <button className="flex justify-center group" onClick={handleMouseClick}>
                                                                 <UserCircleIcon className="h-6 w-6 text-gray-900 hover:text-indigo-700 transition duration-300" />
@@ -126,7 +126,8 @@ export default function NavBarOptions() {
                                                             {
                                                                 user === 'doctor' ? (
                                                                     <div className='flex md:flex-row flex-col md:justify-evenly justify-center items-center md:gap-10 gap-4'>
-                                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Doctor Dashboard</Link>
+                                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Dashboard</Link>
+                                                                        <Link href="#" className="text-gray-900 hover:text-indigo-700 transition duration-200">Appointments</Link>
                                                                         <div className="relative flex">
                                                                             <button className="flex justify-center group" onClick={handleMouseClick}>
                                                                                 <UserCircleIcon className="h-6 w-6 text-gray-900 hover:text-indigo-700 transition duration-300" />
